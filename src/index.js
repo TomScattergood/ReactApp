@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import "./index.css";
 
  document.body.style.background = "gray";
-// comment
+
 
 class ActorRow extends React.Component{
     render() {
