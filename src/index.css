@@ -36,12 +36,12 @@ table {
 .actorTableDiv{
   float: left;
   height:470px;
-  width: 55%;
+  width: 60%;
   padding: 0 4px;
   overflow-wrap: break-word;
   overflow: auto;
-}*/
-
-#deleteButton{
-  
+}
+*/
+#id_heading_1{
+  width: 10%;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css";
 
@@ -16,13 +16,6 @@ class ActorRow extends React.Component{
                 <td>{actor_id}</td>       
                 <td>{first_name}</td>
                 <td>{last_name}</td>
-                <td> 
-                    <button id="deleteButton"
-                        type="button">
-                        Delete
-                        
-                    </button>
-                </td>
             </tr>
             
         )
@@ -36,11 +29,13 @@ class ActorTable extends React.Component{
         this.state = {
             actor_id: "",
             first_name: "", 
-            last_name: "" 
+            last_name: "",
+            actor_id_delete: ""
         }
         this.handleActorIdChange = this.handleActorIdChange.bind(this);
         this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
         this.handleLastNameChange = this.handleLastNameChange.bind(this);
+        this.handleActorIdDelete = this.handleActorIdDelete.bind(this)
     }
 
     postActor(e){
@@ -55,6 +50,11 @@ class ActorTable extends React.Component{
             //.then(response => response.json())
             //.then(data => this.setState({ postId: data.id }));        
     };
+
+    deleteActor(e){
+        e.preventDefault();
+        fetch ('http://localhost:8080/actors/deleteactor/' + this.state.actor_id_delete, {method: 'DELETE'})
+    }
 
     handleActorIdChange(e)  {
         e.preventDefault();
@@ -74,6 +74,13 @@ class ActorTable extends React.Component{
         e.preventDefault();
         this.setState({
             last_name: e.target.value
+        })
+    }
+
+    handleActorIdDelete(e){
+        e.preventDefault();
+        this.setState({
+            actor_id_delete: e.target.value
         })
     }
     render() {
@@ -103,7 +110,6 @@ class ActorTable extends React.Component{
                         <th id = "id_heading_1"> Actor Id </th>
                         <th id = "first_name_heading1">First Name</th>
                         <th id = "last_name_heading1">Last Name </th>
-                        <th id ="Actions">Actions </th>
                     </tr>
                 </thead>
                 <tbody>{rows}</tbody>
@@ -151,6 +157,23 @@ class ActorTable extends React.Component{
                 <button type="submit">Add</button>
             </form>
 
+        <h2> </h2>
+        <h1> Delete an actor </h1>
+
+            <form onSubmit={(e) => this.deleteActor(e)}>
+            <label>
+            Actor Id:
+            <input 
+            type ="text" 
+            value={this.state.actor_id_delete}
+            name = "actor_id"
+            required="required"
+            placeholder ="Enter an Id..."
+            onChange={this.handleActorIdDelete}
+            />
+            </label>
+            <button type="submit">Delete</button>
+            </form>
             </div>
         );
     }
@@ -191,7 +214,6 @@ class FilterableActorTable extends React.Component {
            actors: []
            
        };
-
 
        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
    }
