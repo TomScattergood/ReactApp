@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import "./index.css";
 
  document.body.style.background = "gray";
-
+// comment to test automation 
 
 class ActorRow extends React.Component{
     render() {
@@ -17,7 +17,7 @@ class ActorRow extends React.Component{
                 <td>{first_name}</td>
                 <td>{last_name}</td>
                 <td> 
-                    <button
+                    <button id="deleteButton"
                         type="button">
                         Delete
                         
