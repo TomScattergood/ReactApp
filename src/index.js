@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import "./index.css";
 
  document.body.style.background = "gray";
+
 // comment to test automation 
 
 class ActorRow extends React.Component{
@@ -39,7 +40,6 @@ class ActorTable extends React.Component{
     }
 
     postActor(e){
-        e.preventDefault();
        console.log ("alert(Actor was added to the table)")
         const requestOptions = {
             method: 'POST',
@@ -52,7 +52,6 @@ class ActorTable extends React.Component{
     };
 
     deleteActor(e){
-        e.preventDefault();
         fetch ('http://44.193.201.45:8080/actors/deleteactor/' + this.state.actor_id_delete, {method: 'DELETE'})
     }
 
@@ -103,8 +102,8 @@ class ActorTable extends React.Component{
       
 
         return (
-            <div className="actorTableDiv">
-            <table>
+            <div>
+            <table  className="actorTableDiv">
                 <thead>
                     <tr>
                         <th id = "id_heading_1"> Actor Id </th>
@@ -115,7 +114,7 @@ class ActorTable extends React.Component{
                 <tbody>{rows}</tbody>
             </table>
 
-            <h1> Add an Actor</h1>
+            <h1 className="addActor"> Add an Actor:</h1>
 
             <form onSubmit={(e) => this.postActor(e)}>
             <label>
@@ -158,10 +157,11 @@ class ActorTable extends React.Component{
             </form>
 
         <h2> </h2>
-        <h1> Delete an actor </h1>
+        <h2> </h2>
+        <h1 className="deleteActor"> Delete an actor: </h1>
 
             <form onSubmit={(e) => this.deleteActor(e)}>
-            <label>
+            <label className = "actorIdDelete">
             Actor Id:
             <input 
             type ="text" 

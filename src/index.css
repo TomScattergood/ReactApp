@@ -32,16 +32,34 @@ table {
   form * {
     font-size: 28px;
   }
-/*
+
 .actorTableDiv{
-  float: left;
   height:470px;
   width: 60%;
   padding: 0 4px;
   overflow-wrap: break-word;
   overflow: auto;
+  margin-left: 20%;
 }
-*/
+
 #id_heading_1{
-  width: 10%;
+  width: 20%;
+}
+
+.title{
+  color:white;
+  margin-left: 40%;
+}
+
+.addActor{
+  color: blue;
+}
+
+.deleteActor{
+  color:red;
+  margin-left: 30%;
+}
+
+.actorIdDelete{
+  margin-left: 30%;
 }
