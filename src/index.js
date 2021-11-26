@@ -46,14 +46,14 @@ class ActorTable extends React.Component{
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({actor_id: this.state.actor_id, first_name: this.state.first_name, last_name: this.state.last_name})
         };
-        fetch('http://localhost:8080/actors/addactor', requestOptions)
+        fetch('http://44.193.201.45:8080/actors/addactor', requestOptions)
             //.then(response => response.json())
             //.then(data => this.setState({ postId: data.id }));        
     };
 
     deleteActor(e){
         e.preventDefault();
-        fetch ('http://localhost:8080/actors/deleteactor/' + this.state.actor_id_delete, {method: 'DELETE'})
+        fetch ('http://44.193.201.45:8080/actors/deleteactor/' + this.state.actor_id_delete, {method: 'DELETE'})
     }
 
     handleActorIdChange(e)  {
@@ -219,7 +219,7 @@ class FilterableActorTable extends React.Component {
    }
 
    componentDidMount() {
-       fetch("http://localhost:8080/actors/allactors")
+       fetch("http://44.193.201.45:8080/actors/allactors")
        .then((response) => response.json())
        .then((jsonData) => {
         this.setState({
