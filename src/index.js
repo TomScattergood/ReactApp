@@ -4,7 +4,7 @@ import "./index.css";
 
  document.body.style.background = "gray";
 
-// comment to test automation 
+// comment to test jenkins
 
 class ActorRow extends React.Component{
     render() {
